@@ -16,6 +16,7 @@ enum class PieceType {
     Queen,
     King
 };
+class Board;
 
 class Piece {
 public:

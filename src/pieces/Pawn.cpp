@@ -1,4 +1,5 @@
 #include "Pawn.h"
+#include "../Board.h"
 
 Pawn::Pawn(const int x, const int y, const team color) :
     Piece(x, y, color, 1, PieceType::Pawn, true), firstMove(true), lastMove(false), canEat(false) {}
