@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.9)
+project(chess-ai-engine)
+
+set(CMAKE_CXX_STANDARD 17)
+
+file(GLOB_RECURSE SRC_FILES src/*.cpp)
+file(GLOB_RECURSE HEADERS src/*.h)
+
+add_executable(chessEngine main.cpp ${SRC_FILES} ${HEADERS})
