@@ -3,3 +3,4 @@
 //
 
 #include "Queen.h"
+#include "../Board.h"

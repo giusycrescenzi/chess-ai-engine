@@ -5,12 +5,12 @@
 #ifndef KNIGHT_H
 #define KNIGHT_H
 
+class Board;
 
-
-class Knight {
-
+class Knight final : public Piece {
+public:
+    Knight(const int x, const int y, const team color) : Piece(x, y, color, 3, PieceType::Knight, true) {}
+    bool isLegalMove(int newX, int newY) override;
 };
-
-
 
 #endif //KNIGHT_H

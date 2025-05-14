@@ -7,8 +7,9 @@ class Board {
 public:
     Board();
     ~Board();
+    void PrintBoard() const;
 
-    [[nodiscard]] Piece* getSquare(int x, int y) const {
+    [[nodiscard]] Piece* getSquare(const int x, const int y) const {
         return squares[y][x];
     }
 private:

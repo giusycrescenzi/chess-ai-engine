@@ -24,11 +24,11 @@ bool Pawn::isLegalMove(const int newX, const int newY) {
     }
     if (!firstMove) {
         if (color == WHITE) {
-            if (newY == yPos && newX == xPos+1) {
+            if (newY == yPos && newX == xPos+movements) {
                 return true;
             }
         } else {
-            if (newY == yPos && newX == xPos-1) {
+            if (newY == yPos && newX == xPos-movements) {
                 return true;
             }
         }
@@ -36,9 +36,6 @@ bool Pawn::isLegalMove(const int newX, const int newY) {
     return false;
 }
 
-void Pawn::eat(Piece& enemy) {
-    enemy.die();
-}
 void Pawn::checkPosition() {
     if (color == WHITE) {
         if (yPos == BOARD_Y)

@@ -9,7 +9,6 @@ public:
     Pawn(int x, int y, team color);
     // this function return value will be checked to call the move method
     bool isLegalMove(int newX, int newY) override;
-    void eat(Piece& enemy) override;
     void checkPosition(); // to check if you can promote
     // this method needs user input to choose which promotion
     void Promote(Piece& promotion);
@@ -31,7 +30,7 @@ public:
     [[nodiscard]] bool isLastMove() const {
         return lastMove;
     }
-    [[nodiscard]] bool isEat() const {
+    [[nodiscard]] bool CanEat() const {
         return canEat;
     }
 private:

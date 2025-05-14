@@ -3,7 +3,7 @@
 //
 #include "Piece.h"
 
-Piece::Piece(const int x, const int y, team color, const int move, const PieceType type,const bool isAlive) {
+Piece::Piece(const int x, const int y, const team color, const int move, const PieceType type,const bool isAlive) {
     xPos = x;
     yPos = y;
     movements = move;

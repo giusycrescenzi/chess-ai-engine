@@ -3,3 +3,4 @@
 //
 
 #include "Knight.h"
+#include "../Board.h"
