@@ -4,15 +4,15 @@
 Pawn::Pawn(const int x, const int y, const team color) :
     Piece(x, y, color, 1, PieceType::Pawn, true), firstMove(true), lastMove(false), canEat(false) {}
 
-bool Pawn::isLegalMove(const int newX, const int newY) {
+bool Pawn::isLegalMove(const int newX, const int newY, Board& board) {
     if (firstMove) {
-        if (color == WHITE) {
-            if (newX - xPos > 0 && newX - xPos <= 2 && newY == yPos) {
+        if (color == WHITE && board.getSquare(yPos+1, xPos)==nullptr && board.getSquare(yPos+2, xPos)==nullptr) {
+            if (newY - yPos > 0 && newY - yPos <= 2 && newX == xPos) {
                 firstMove =  false;
                 return true;
             }
-        } else {
-            if (xPos - newX > 0 && xPos - newX <= 2 && newY == yPos) {
+        } else if (board.getSquare(yPos-1, xPos)==nullptr && board.getSquare(yPos-2, xPos)==nullptr) {
+            if (yPos - newY > 0 && yPos - newY <= 2 && newX == xPos) {
                 firstMove = false;
                 return true;
             }
@@ -23,12 +23,12 @@ bool Pawn::isLegalMove(const int newX, const int newY) {
         return false;
     }
     if (!firstMove) {
-        if (color == WHITE) {
-            if (newY == yPos && newX == xPos+movements) {
+        if (color == WHITE && board.getSquare(yPos+1, xPos)==nullptr) {
+            if (newX == xPos && newY == yPos+movements) {
                 return true;
             }
-        } else {
-            if (newY == yPos && newX == xPos-movements) {
+        } else if (board.getSquare(yPos-1, xPos)==nullptr) {
+            if (newX == xPos && newY == yPos-movements) {
                 return true;
             }
         }

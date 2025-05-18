@@ -5,12 +5,13 @@
 #ifndef QUEEN_H
 #define QUEEN_H
 
-class Borad;
+#include "../Piece.h"
+class Board;
 
 class Queen final : public Piece {
 public:
     Queen(const int x, const int y, const team color) : Piece(x, y, color, 8, PieceType::Queen, true) {}
-    bool isLegalMove(int newX, int newY) override;
+    bool isLegalMove(int newX, int newY, Board& board) override;
 };
 
 

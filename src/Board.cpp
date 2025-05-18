@@ -1,11 +1,4 @@
 #include "Board.h"
-#include <iostream>
-#include "pieces/Pawn.h"
-#include "pieces/Knight.h"
-#include "pieces/Bishop.h"
-#include "pieces/Rook.h"
-#include "pieces/Queen.h"
-#include "pieces/King.h"
 
 Board::Board() {
     // two rows of pawns
@@ -39,47 +32,54 @@ Board::~Board() {
     }
 }
 void Board::PrintBoard() const {
-    for (int i = 0; i < BOARD_X; i++) {
-        for (int j = 0; j < BOARD_Y; j++) {
-            switch (squares[i][j]->getType()) {
-                case PieceType::Pawn :
-                    if (squares[i][j]->getColor()==WHITE)
-                        std::cout<<"♙";
-                    else
-                        std::cout<<"♟";
+    for (int j = 0; j < BOARD_X; j++) {
+        for (int i = 0; i < BOARD_Y; i++) {
+            if (squares[i][j] != nullptr) {
+                switch (squares[i][j]->getType()) {
+                    case PieceType::Pawn :
+                        if (squares[i][j]->getColor()==WHITE)
+                            std::cout<<"♙";
+                        else
+                            std::cout<<"♟";
                     break;
-                case PieceType::Knight :
-                    if (squares[i][j]->getColor()==WHITE)
-                        std::cout<<"♘";
-                    else
-                        std::cout<<"♞";
+                    case PieceType::Knight :
+                        if (squares[i][j]->getColor()==WHITE)
+                            std::cout<<"♘";
+                        else
+                            std::cout<<"♞";
                     break;
-                case PieceType::Bishop :
-                    if (squares[i][j]->getColor()==WHITE)
-                        std::cout<<"♗";
-                    else
-                        std::cout<<"♝";
+                    case PieceType::Bishop :
+                        if (squares[i][j]->getColor()==WHITE)
+                            std::cout<<"♗";
+                        else
+                            std::cout<<"♝";
                     break;
-                case PieceType::Rook :
-                    if (squares[i][j]->getColor()==WHITE)
-                        std::cout<<"♖";
-                    else
-                        std::cout<<"♜";
+                    case PieceType::Rook :
+                        if (squares[i][j]->getColor()==WHITE)
+                            std::cout<<"♖";
+                        else
+                            std::cout<<"♜";
                     break;
-                case PieceType::Queen :
-                    if (squares[i][j]->getColor()==WHITE)
-                        std::cout<<"♕";
-                    else
-                        std::cout<<"♛";
+                    case PieceType::Queen :
+                        if (squares[i][j]->getColor()==WHITE)
+                            std::cout<<"♕";
+                        else
+                            std::cout<<"♛";
                     break;
-                case PieceType::King :
-                    if (squares[i][j]->getColor()==WHITE)
-                        std::cout<<"♔";
-                    else
-                        std::cout<<"♚";
+                    case PieceType::King :
+                        if (squares[i][j]->getColor()==WHITE)
+                            std::cout<<"♔";
+                        else
+                            std::cout<<"♚";
                     break;
-                default: printf(".");
+                    default: break;
+                }
+            } else {
+                std::cout<<".";
             }
+            if (i != BOARD_X-1)
+                std::cout<<" ";
         }
+        std::cout<<std::endl;
     }
 }

@@ -23,7 +23,7 @@ class Piece {
 public:
     Piece(int x, int y, team color, int move, PieceType type, bool isAlive = true);
     virtual ~Piece() = default;
-    virtual bool isLegalMove(int newX, int newY) = 0;
+    virtual bool isLegalMove(int newX, int newY, Board& board) = 0;
     virtual void move(int newX, int newY); //islegalMove will call it eventually
 
     virtual void eat(Piece& enemy) {

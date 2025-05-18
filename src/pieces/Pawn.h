@@ -8,7 +8,7 @@ class Pawn final : public Piece {
 public:
     Pawn(int x, int y, team color);
     // this function return value will be checked to call the move method
-    bool isLegalMove(int newX, int newY) override;
+    bool isLegalMove(int newX, int newY, Board& board) override;
     void checkPosition(); // to check if you can promote
     // this method needs user input to choose which promotion
     void Promote(Piece& promotion);
