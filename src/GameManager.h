@@ -9,8 +9,12 @@
 
 class GameManager {
 public:
-    explicit GameManager(int p = 1);
+    explicit GameManager(int p = 0);
     void run();
+
+    void SinglePlayer(Board& board);
+    void MultiPlayer(Board& board);
+
 private:
     int players;
 };
