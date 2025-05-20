@@ -14,6 +14,7 @@ public:
     bool isLegalMove(int newX, int newY, Board& board) override;
 private:
     bool canCastle;
+    bool isKing {true};
 };
 
 #endif //KING_H

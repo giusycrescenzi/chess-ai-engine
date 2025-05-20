@@ -6,17 +6,20 @@
 #define GAMEMANAGER_H
 
 #include "Board.h"
+#include <sstream>
 
 class GameManager {
 public:
     explicit GameManager(int p = 0);
     void run();
 
-    void SinglePlayer(Board& board);
-    void MultiPlayer(Board& board);
 
 private:
+    Board board;
     int players;
+    void SinglePlayer(Board& board);
+    void MultiPlayer(Board& board);
+    std::string pieceTypeToString(PieceType type);
 };
 
 
