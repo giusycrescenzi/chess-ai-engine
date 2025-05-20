@@ -38,27 +38,29 @@ void GameManager::MultiPlayer(Board& board) {
         j = 2-i;
         // this whole block checks if the piece coordinates are legal
         std::cout << "player " << j << " turn" << std::endl;
-        std::cout << "starting coordinates in the format x,y";
-        std::getline(std::cin, input);
+        std::cout << "starting coordinates in the format x,y => ";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::getline(std::cin, input);
         std::stringstream ss(input);
         if (char comma; ss >> oldX >> comma >> oldY && comma == ',' && ss.eof()) {
             std::cout<<"moving "<< pieceTypeToString(board.getSquare(oldX, oldY)->getType()) << std::endl;
         } else {
             std::cerr << "Invalid format. Please enter coordinates as x,y (e.g. 2,3)\n";
         }
-        std::cout << "ending coordinates in the format x,y";
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "ending coordinates in the format x,y => ";
+        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::getline(std::cin, input);
         std::stringstream ss2(input);
         if (char comma; ss2 >> newX >> comma >> newY && comma == ',' && ss.eof()) {
-            if (board.getSquare(newX,newY)->isLegalMove(newX,newY,board)) {
+            if (board.getSquare(oldX,oldY)->isLegalMove(newX,newY,board)) {
                 board.getSquare(newX,newY)->move(newX,newY);
                 board.PrintBoard();
                 std::cout<<std::endl;
+            } else {
+                std::cerr << "illegal movement" << std::endl;
             }
         } else {
-            std::cerr << "Invalid format. Please enter coordinates as x,y";
+            std::cerr << "Invalid format. Please enter coordinates as x,y\n";
         }
         // check if the game ended to break the loop
         if (board.getSquare(newX,newY)->getType()==PieceType::King) {
